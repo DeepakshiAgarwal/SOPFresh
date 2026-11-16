@@ -317,6 +317,100 @@
     display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
   }
 
+  /* ---------- Arrow flows ---------- */
+  .flow-arrow {
+    position: relative; height: 26px; width: 2px; background: var(--brand); margin: 0 0 0 21px; flex-shrink: 0;
+  }
+  .flow-arrow::after {
+    content: ""; position: absolute; left: -5px; bottom: -2px;
+    border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 9px solid var(--brand);
+  }
+  .flow-arrow.center { margin-left: auto; margin-right: auto; }
+  .flow-arrow.small { height: 14px; margin-left: 13px; }
+  .flow-arrow .fa-label {
+    position: absolute; left: 12px; top: 4px; white-space: nowrap;
+    font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint);
+  }
+
+  .rf-map { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 3px; margin-bottom: 14px; }
+  .rf-chip {
+    font-family: var(--font-mono); font-size: 11px; padding: 4px 9px; border-radius: 999px;
+    background: var(--brand-soft); color: var(--brand); border: 1px solid var(--brand-soft-line); white-space: nowrap;
+  }
+  .rf-chip.decision { background: var(--warn-soft); color: var(--warn); border-color: var(--warn); }
+  .rf-chip.start { background: var(--good-soft); color: var(--good); border-color: var(--good); }
+  .rf-sep { color: var(--brand); display: inline-flex; }
+
+  .rf { display: flex; flex-direction: column; margin-top: 2px; }
+  .rf-node {
+    display: flex; gap: 12px; align-items: flex-start; background: var(--paper);
+    border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 12px;
+  }
+  .rf-node .rp-n {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--brand); background: var(--brand-soft);
+    border-radius: 7px; min-width: 26px; height: 26px; padding: 0 5px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .rf-node.start { border-color: var(--good); }
+  .rf-node.start .rp-n { background: var(--good-soft); color: var(--good); }
+  .rf-node.end { border-color: var(--brand); border-width: 2px; }
+  .rf-node.decision { border: 1px dashed var(--warn); background: var(--warn-soft); }
+  .rf-node.decision .rp-n { background: var(--warn); color: var(--paper); }
+  .rf-body { flex: 1; min-width: 0; }
+  .rf-body .fvalue { white-space: pre-line; }
+  .rf-cond { font-weight: 600; margin-bottom: 3px; }
+  .rf-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .06em;
+    padding: 2px 6px; border-radius: 5px; background: var(--warn); color: var(--paper); margin-right: 6px; vertical-align: 1px;
+  }
+  .rf-cap {
+    font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .08em; color: var(--ink-faint);
+    margin-left: auto; align-self: center; flex-shrink: 0;
+  }
+  .rf-node.start .rf-cap { color: var(--good); }
+  .rf-node.end .rf-cap { color: var(--brand); }
+
+  .rf-or { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--warn); padding: 0 3px; }
+  .rf-group { border: 1px dashed var(--warn); border-radius: 12px; padding: 8px 10px 10px; }
+  .rf-group-cap { font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .08em; color: var(--warn); margin: 0 0 7px 2px; }
+  .rf-branches { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 8px; }
+  .rf-group .rf-node.decision { border-style: solid; }
+  .mini-flow { display: flex; flex-direction: column; }
+  .mf-node {
+    background: var(--surface); border: 1px solid var(--line-strong); border-radius: 8px; padding: 7px 10px; font-size: 12.8px;
+  }
+  .mf-node.first { border-color: var(--good); }
+  .mf-node.last { border-color: var(--brand); border-width: 2px; }
+
+  .sflow { display: flex; flex-direction: column; align-items: stretch; margin-bottom: 22px; }
+  .sf-node {
+    font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+    text-align: center; background: var(--surface); color: var(--ink); border: 1px solid var(--line-strong);
+    border-radius: 10px; padding: 10px 14px; cursor: pointer;
+  }
+  .sf-node small { display: block; font-weight: 400; color: var(--ink-faint); text-transform: none; letter-spacing: 0; margin-top: 2px; }
+  .sf-node.open { border-color: var(--good); }
+  .sf-node.close { border-color: var(--brand); }
+  .sf-node:hover, .sf-chip:hover { border-color: var(--brand); }
+  .sf-pick { border: 1px dashed var(--line-strong); border-radius: 12px; padding: 12px 14px; background: var(--surface); }
+  .sf-pick-title { font-size: 12px; color: var(--ink-dim); margin-bottom: 9px; text-align: center; }
+  .sf-chips { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; }
+  .sf-chip {
+    font-size: 12px; padding: 6px 11px; border-radius: 8px; cursor: pointer;
+    background: var(--subcat-bg); color: var(--subcat-ink); border: 1px solid var(--subcat-line); font-weight: 600;
+  }
+  .script-card.linked { margin-bottom: 0; }
+  .script-banner { scroll-margin-top: 12px; }
+
+  .fs-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  @media (max-width: 640px) { .fs-branches { grid-template-columns: 1fr; } }
+  .fs-branch { border-radius: 8px; padding: 7px 10px; font-size: 12.5px; border: 1px solid var(--line); background: var(--surface); }
+  .fs-branch b { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .05em; margin-right: 5px; }
+  .fs-branch.yes { border-color: var(--good); background: var(--good-soft); }
+  .fs-branch.yes b { color: var(--good); }
+  .fs-branch.no { border-color: var(--bad); background: var(--bad-soft); }
+  .fs-branch.no b { color: var(--bad); }
+
   .lang-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 640px) { .lang-pair { grid-template-columns: 1fr; } }
   .lang-pair .field .fvalue { font-family: var(--font-hi); }
@@ -411,7 +505,7 @@
   }
   .source-link:hover { color: var(--brand); border-color: var(--brand); }
 
-  .flow-timeline { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+  .flow-timeline { display: flex; flex-direction: column; gap: 0; margin-bottom: 26px; }
   .flow-step {
     display: flex; gap: 12px; background: var(--surface); border: 1px solid var(--line);
     border-radius: 10px; padding: 12px 14px;
@@ -689,9 +783,12 @@
     html += sourceLinkHtml(sop.sourceUrl);
 
     if (page.key === 'flow') {
-      html += '<div class="flow-timeline">' + page.steps.map(function (s) {
-        return '<div class="flow-step ' + esc(s.kind) + '"><div class="fs-code">' + esc(s.code) + '</div>' +
-          '<div><div class="fs-title">' + esc(s.title) + '</div><div class="fs-body">' + esc(s.body) + '</div></div></div>';
+      html += '<div class="flow-timeline">' + page.steps.map(function (s, i) {
+        var br = s.kind === 'decision' ? branchHtml(s.body) : '';
+        return (i ? arrowDown('', s.kind === 'success' ? 'connected' : '') : '') +
+          '<div class="flow-step ' + esc(s.kind) + '"><div class="fs-code">' + esc(s.code) + '</div>' +
+          '<div style="flex:1;min-width:0"><div class="fs-title">' + esc(s.title) + '</div>' +
+          (br ? br : '<div class="fs-body">' + esc(s.body) + '</div>') + '</div></div>';
       }).join('') + '</div>';
 
       html += '<div class="page-head"><h1 style="font-size:15px;" class="eyebrow">Quick Reference — Situation → What To Do</h1></div>';
@@ -707,8 +804,8 @@
       html += '<div class="field full" style="margin-bottom:20px;"><div class="flabel">How Agents Use This</div><div class="fvalue">' + esc(page.howAgentsUse) + '</div></div>';
 
       html += '<div class="flow-columns">';
-      html += '<div class="field"><div class="flabel">1. If the Recharge IS Active</div><ul class="clean fvalue">' + page.activeFlow.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul></div>';
-      html += '<div class="field"><div class="flabel">2. If the Recharge is NOT Active</div><ul class="clean fvalue">' + page.notActiveFlow.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul></div>';
+      html += '<div class="field"><div class="flabel">1. If the Recharge IS Active</div>' + miniFlowHtml(page.activeFlow) + '</div>';
+      html += '<div class="field"><div class="flabel">2. If the Recharge is NOT Active</div>' + miniFlowHtml(page.notActiveFlow) + '</div>';
       html += '</div>';
 
       html += '<div class="flow-columns">';
@@ -765,6 +862,91 @@
         });
       });
     }
+  }
+
+  var ARROW_SVG = '<svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="5" x2="14" y2="5"/><polyline points="10 1 14 5 10 9"/></svg>';
+  function arrowDown(cls, label) {
+    return '<div class="flow-arrow' + (cls ? ' ' + cls : '') + '">' + (label ? '<span class="fa-label">' + esc(label) + '</span>' : '') + '</div>';
+  }
+
+  /* resolution path text ("Step 1: ... \u2192 Step 2: ...") -> flow nodes */
+  function parseFlowSteps(text) {
+    var parts = text.split(/\u2192/).map(function (s) { return s.trim(); }).filter(Boolean);
+    return parts.map(function (raw, i) {
+      var label = String(i + 1), cond = '', body = raw;
+      var m = raw.match(/^Step\s*(\d+[a-z]?)\s*(?:\(([^)]*)\))?\s*[:.\-\u2013]?\s*/i);
+      if (m) { label = m[1]; cond = m[2] || ''; body = raw.slice(m[0].length); }
+      var decision = !!cond || /[a-z]$/i.test(label);
+      var im = body.match(/^(If|When|In case)\s+([^,:]+?)\s*[,:]\s*(.+)$/i);
+      if (im) { decision = true; cond = cond || im[2]; body = im[3]; }
+      else if (/^(If|When|In case)\b/i.test(body)) { decision = true; }
+      return { label: label, cond: cond, body: body, decision: decision, raw: raw };
+    });
+  }
+  function shortLabel(t) {
+    var w = t.replace(/^[^A-Za-z\u0900-\u097F0-9]+/, '').split(/\s+/).slice(0, 4).join(' ');
+    return w.length > 30 ? w.slice(0, 29) + '\u2026' : w;
+  }
+  /* consecutive branch steps (3a, 3b, ...) are alternatives: group them as "choose one" */
+  function groupFlow(steps) {
+    var out = [];
+    for (var i = 0; i < steps.length; i++) {
+      var m = steps[i].label.match(/^(\d+)[a-z]$/i);
+      if (!m) { out.push({ one: steps[i] }); continue; }
+      var grp = [steps[i]];
+      while (i + 1 < steps.length) {
+        var n = steps[i + 1].label.match(/^(\d+)[a-z]$/i);
+        if (n && n[1] === m[1]) { grp.push(steps[i + 1]); i++; } else break;
+      }
+      out.push(grp.length > 1 ? { group: grp } : { one: grp[0] });
+    }
+    return out;
+  }
+  function nodeHtml(s, cls, cap) {
+    return '<div class="rf-node' + cls + '"><span class="rp-n">' + esc(s.label) + '</span><div class="rf-body">' +
+      (s.cond ? '<div class="rf-cond"><span class="rf-tag">IF</span>' + esc(s.cond) + '</div>' : '') +
+      '<span class="fvalue">' + esc(s.body) + '</span></div>' + (cap ? '<span class="rf-cap">' + cap + '</span>' : '') + '</div>';
+  }
+  function chipHtml(s, cls) {
+    return '<span class="rf-chip' + cls + '">' + esc(s.label) + ' \u00b7 ' + esc(shortLabel(s.cond ? 'If ' + s.cond : s.body)) + '</span>';
+  }
+  function flowHtml(text) {
+    var steps = parseFlowSteps(text);
+    if (!steps.length) return '';
+    var segs = groupFlow(steps);
+    var html = '<div class="rf-map">' + segs.map(function (g, i) {
+      var chips = g.group
+        ? g.group.map(function (s) { return chipHtml(s, ' decision'); }).join('<span class="rf-or">or</span>')
+        : chipHtml(g.one, g.one.decision ? ' decision' : (i === 0 ? ' start' : ''));
+      return (i ? '<span class="rf-sep">' + ARROW_SVG + '</span>' : '') + chips;
+    }).join('') + '</div>';
+    html += '<div class="rf">' + segs.map(function (g, i) {
+      var first = i === 0, last = i === segs.length - 1;
+      if (g.group) {
+        return (i ? arrowDown('', 'depends on the case') : '') +
+          '<div class="rf-group"><div class="rf-group-cap">CHOOSE ONE \u00b7 based on the case</div><div class="rf-branches">' +
+          g.group.map(function (s) { return nodeHtml(s, ' decision', ''); }).join('') + '</div></div>';
+      }
+      var s = g.one;
+      var cls = s.decision ? ' decision' : (first ? ' start' : (last ? ' end' : ''));
+      var cap = first ? 'START' : (last ? 'END' : '');
+      return (i ? arrowDown('', s.decision ? 'if needed' : (segs[i - 1].group ? 'then' : '')) : '') + nodeHtml(s, cls, cap);
+    }).join('') + '</div>';
+    return html;
+  }
+  function miniFlowHtml(items) {
+    return '<div class="mini-flow">' + items.map(function (t, i) {
+      var cls = i === 0 ? ' first' : (i === items.length - 1 ? ' last' : '');
+      return (i ? arrowDown('small') : '') + '<div class="mf-node' + cls + '">' + esc(t) + '</div>';
+    }).join('') + '</div>';
+  }
+  function branchHtml(body) {
+    var parts = body.split('|').map(function (x) { return x.trim(); }).filter(Boolean);
+    if (parts.length < 2 || !parts.every(function (x) { return /^(Yes|No)\b/i.test(x); })) return '';
+    return '<div class="fs-branches">' + parts.map(function (x) {
+      var yes = /^Yes/i.test(x);
+      return '<div class="fs-branch ' + (yes ? 'yes' : 'no') + '"><b>' + (yes ? 'YES' : 'NO') + '</b>' + esc(x.replace(/^(Yes|No)\s*\u2192?\s*/i, '')) + '</div>';
+    }).join('') + '</div>';
   }
 
   function renderPolicy(key) {
@@ -922,11 +1104,8 @@
     }
 
     if (row.resolutionPath) {
-      var steps = row.resolutionPath.split(/→/).map(function (s) { return s.trim(); }).filter(Boolean);
-      html += '<div style="margin-top:14px;"><div class="flabel" style="font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px;">Current Resolution Path</div>';
-      html += '<div class="resolution-path">' + steps.map(function (s, i) {
-        return '<div class="rp-step"><span class="rp-n">' + (i + 1) + '</span><span class="fvalue">' + esc(s) + '</span></div>';
-      }).join('') + '</div></div>';
+      html += '<div style="margin-top:14px;"><div class="flabel" style="font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;">Current Resolution Path \u2014 flow</div>';
+      html += flowHtml(row.resolutionPath) + '</div>';
     }
 
     html += '<div class="field-grid" style="margin-top:14px;">';
@@ -958,12 +1137,33 @@
     html += '<div class="page-head"><div class="eyebrow">Call Script</div><h1>' + esc(tab.title || tab.name) + '</h1>' +
       '<p class="desc">' + esc(tab.subtitle) + '</p></div>';
 
+    /* call-flow overview: opening -> pick the matching sub-category -> closing */
+    var opening = null, closing = null, secs = [];
+    tab.items.forEach(function (item, i) {
+      if (item.type !== 'banner') return;
+      var t = item.text.trim();
+      var n = 0;
+      for (var k = i + 1; k < tab.items.length && tab.items[k].type !== 'banner'; k++) n++;
+      if (/^COMMON OPENING/i.test(t)) opening = { i: i, n: n };
+      else if (/^COMMON CLOSING/i.test(t)) closing = { i: i, n: n };
+      else if (/^SUB-CATEGORY:/i.test(t)) secs.push({ i: i, label: t.replace(/^SUB-CATEGORY:\s*/i, '') });
+    });
+    if (secs.length) {
+      html += '<div class="sflow">';
+      if (opening) html += '<button class="sf-node open" data-jump="sec-' + opening.i + '">Common opening<small>' + opening.n + ' steps \u00b7 every call</small></button>' + arrowDown('center');
+      html += '<div class="sf-pick"><div class="sf-pick-title">Then follow the matching sub-category</div><div class="sf-chips">' +
+        secs.map(function (x) { return '<button class="sf-chip" data-jump="sec-' + x.i + '">' + esc(x.label) + '</button>'; }).join('') + '</div></div>';
+      if (closing) html += arrowDown('center') + '<button class="sf-node close" data-jump="sec-' + closing.i + '">Common closing<small>' + closing.n + ' steps \u00b7 every call</small></button>';
+      html += '</div>';
+    }
+
     tab.items.forEach(function (item, i) {
       if (item.type === 'banner') {
         var isSubcat = /^SUB-CATEGORY:/i.test(item.text.trim());
-        html += '<div class="script-banner' + (isSubcat ? ' subcat' : '') + '">' + esc(item.text) + '</div>';
+        html += '<div class="script-banner' + (isSubcat ? ' subcat' : '') + '" id="sec-' + i + '">' + esc(item.text) + '</div>';
       } else {
-        html += '<div class="script-card" data-hindi-idx="' + i + '">';
+        var linked = tab.items[i + 1] && tab.items[i + 1].type === 'step';
+        html += '<div class="script-card' + (linked ? ' linked' : '') + '" data-hindi-idx="' + i + '">';
         html += '<div class="sc-head"><div><div class="sc-step">' + esc(item.step) + '</div>' +
           (item.subCategory && item.subCategory !== item.step.replace(/^\d+\.\s*/, '') ? '' : '') + '</div>' +
           '<button class="copybtn" data-copy="' + i + '"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy</button>';
@@ -973,9 +1173,17 @@
           html += '<div class="sc-backend"><div class="flabel">Agent Backend Action</div>' + esc(item.backend) + '</div>';
         }
         html += '</div>';
+        if (linked) html += arrowDown('');
       }
     });
     mainInner.innerHTML = html;
+
+    mainInner.querySelectorAll('[data-jump]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var el = document.getElementById(b.getAttribute('data-jump'));
+        if (el) el.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
 
     mainInner.querySelectorAll('[data-copy]').forEach(function (btn) {
       btn.addEventListener('click', function () {
